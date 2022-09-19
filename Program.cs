@@ -431,7 +431,7 @@ string[,] spiralMatrix(int firstLen, int secondLen)
                 speedLine = -1;
             }
         }
-        
+
         else if (speedLine == -1)
         {
             if (line - speedLine < 0)
@@ -444,7 +444,6 @@ string[,] spiralMatrix(int firstLen, int secondLen)
                 speedColumn = 1;
                 speedLine = 0;
             }
-
         }
         line += speedLine;
         column += speedColumn;
@@ -455,9 +454,9 @@ string[,] spiralMatrix(int firstLen, int secondLen)
 
 void writeStringMatrix(string[,] array)
 {
-    for (int i = 0; i < 4; i++)
+    for (int i = 0; i < array.GetLength(0); i++)
     {
-        for (int j = 0; j < 4; j++)
+        for (int j = 0; j < array.GetLength(1); j++)
         {
             Console.Write(array[i, j] + " ");
         }
@@ -468,9 +467,8 @@ void writeStringMatrix(string[,] array)
 void exercise62()
 {
     //Напишите программу, которая заполнит спирально массив 4 на 4.
-    string[,] array = spiralMatrix(5, 5);
+    string[,] array = spiralMatrix(4, 4);
     writeStringMatrix(array);
-    // Console.WriteLine($"_{array[2, 3]}_");
 }
 
 exercise62();
