@@ -360,12 +360,12 @@ void exercise60()
     writeTribleArray(array);
 }
 
-string[,] spiralMatrix()
+string[,] spiralMatrix(int firstLen, int secondLen)
 {
-    string[,] array = new string[4, 4];
-    for (int i = 0; i < 4; i++)
+    string[,] array = new string[firstLen, secondLen];
+    for (int i = 0; i < firstLen; i++)
     {
-        for (int j = 0; j < 4; j++)
+        for (int j = 0; j < secondLen; j++)
         {
             array[i, j] = "0";
         }
@@ -375,7 +375,7 @@ string[,] spiralMatrix()
     int column = 0;
     int speedLine = 0;
     int speedColumn = 1;
-    for (int i = 0; i < 16; i++)
+    for (int i = 0; i < firstLen * secondLen; i++)
     {
 
         if (num < 10)
@@ -390,7 +390,7 @@ string[,] spiralMatrix()
 
         if (speedColumn == 1)
         {
-            if (column + speedColumn > 3)
+            if (column + speedColumn > secondLen - 1)
             {
                 speedColumn = 0;
                 speedLine = 1;
@@ -406,7 +406,7 @@ string[,] spiralMatrix()
         else if (speedLine == 1)
         {
 
-            if (line + speedLine > 3)
+            if (line + speedLine > firstLen - 1)
             {
                 speedColumn = -1;
                 speedLine = 0;
@@ -468,7 +468,7 @@ void writeStringMatrix(string[,] array)
 void exercise62()
 {
     //Напишите программу, которая заполнит спирально массив 4 на 4.
-    string[,] array = spiralMatrix();
+    string[,] array = spiralMatrix(5, 5);
     writeStringMatrix(array);
     // Console.WriteLine($"_{array[2, 3]}_");
 }
