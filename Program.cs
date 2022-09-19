@@ -470,5 +470,8 @@ void exercise62()
     string[,] array = spiralMatrix(4, 4);
     writeStringMatrix(array);
 }
-
+// exercise54();
+// exercise56();
+// exercise58();
+// exercise60();
 exercise62();
