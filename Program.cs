@@ -1,4 +1,4 @@
-﻿double randRealNumder(int min, int max, int amount)
+﻿double RandRealNumder(int min, int max, int amount)
 {
     Random rand = new Random();
     double fractionPart = rand.NextDouble();
@@ -7,20 +7,20 @@
     return result;
 }
 
-double[,] randFractionMatrix(int line, int column, int min, int max, int amount)
+double[,] RandFractionMatrix(int line, int column, int min, int max, int amount)
 {
     double[,] array = new double[line, column];
     for (int i = 0; i < line; i++)
     {
         for (int j = 0; j < column; j++)
         {
-            array[i, j] = randRealNumder(min, max, amount);
+            array[i, j] = RandRealNumder(min, max, amount);
         }
     }
     return array;
 }
 
-int[,] randMatrix(int line, int column, int min, int max)
+int[,] RandMatrix(int line, int column, int min, int max)
 {
     int[,] array = new int[line, column];
 
@@ -34,7 +34,7 @@ int[,] randMatrix(int line, int column, int min, int max)
     return array;
 }
 
-void writeIntMatrix(int[,] array)
+void WriteIntMatrix(int[,] array)
 {
     for (int i = 0; i < array.GetLength(0); i++)
     {
@@ -46,7 +46,7 @@ void writeIntMatrix(int[,] array)
     }
 }
 
-void writeDoubleMatrix(double[,] array)
+void WriteDoubleMatrix(double[,] array)
 {
     for (int i = 0; i < array.GetLength(0); i++)
     {
@@ -58,7 +58,7 @@ void writeDoubleMatrix(double[,] array)
     }
 }
 
-void exercise47()
+void Exercise47()
 {
     //  Задайте двумерный массив размером m×n, 
     // заполненный случайными вещественными числами.
@@ -68,11 +68,11 @@ void exercise47()
     Console.WriteLine("Введите количество столбцов");
     int column = Convert.ToInt32(Console.ReadLine());
 
-    double[,] array = randFractionMatrix(line, column, 10, 99, 1);
-    writeDoubleMatrix(array);
+    double[,] array = RandFractionMatrix(line, column, 10, 99, 1);
+    WriteDoubleMatrix(array);
 }
 
-int getElement(int number, int[,] array)
+int GetElement(int number, int[,] array)
 {
     int length = array.GetLength(0) * array.GetLength(1);
     if (number > length)
@@ -88,17 +88,17 @@ int getElement(int number, int[,] array)
     }
 }
 
-void exercise50()
+void Exercise50()
 {
     //Напишите программу, которая на вход принимает позиции элемента в двумерном массиве,
     //и возвращает значение этого элемента или же указание, что такого элемента нет.
 
-    int[,] array = randMatrix(4, 4, 10, 99);
-    writeIntMatrix(array);
+    int[,] array = RandMatrix(4, 4, 10, 99);
+    WriteIntMatrix(array);
     Console.WriteLine("Введите порядковый номер элемента");
 
     int number = Convert.ToInt32(Console.ReadLine());
-    int element = getElement(number, array);
+    int element = GetElement(number, array);
     if (element == -1)
     {
         Console.WriteLine("Такого элемента нет");
@@ -110,7 +110,7 @@ void exercise50()
 
 }
 
-double[] columnAverage(int[,] array)
+double[] ColumnAverage(int[,] array)
 {
     double[] average = new double[array.GetLength(1)];
     for (int i = 0; i < array.GetLength(1); i++)
@@ -129,7 +129,7 @@ double[] columnAverage(int[,] array)
 
 }
 
-void writeDoubleArray(double[] array)
+void WriteDoubleArray(double[] array)
 {
     for (int i = 0; i < array.Length; i++)
     {
@@ -139,7 +139,7 @@ void writeDoubleArray(double[] array)
 
 }
 
-void writeIntArray(int[] array)
+void WriteIntArray(int[] array)
 {
     for (int i = 0; i < array.Length; i++)
     {
@@ -149,17 +149,17 @@ void writeIntArray(int[] array)
 
 }
 
-void exercise52()
+void Exercise52()
 {
     //Задайте двумерный массив из целых чисел. 
     //Найдите среднее арифметическое элементов в каждом столбце.
-    int[,] array = randMatrix(5, 6, 0, 10);
-    writeIntMatrix(array);
-    double[] average = columnAverage(array);
-    writeDoubleArray(average);
+    int[,] array = RandMatrix(5, 6, 0, 10);
+    WriteIntMatrix(array);
+    double[] average = ColumnAverage(array);
+    WriteDoubleArray(average);
 }
 
-int[] sortArray(int[] array)
+int[] SortArray(int[] array)
 {
     int max = 0;
     int reserv = 0;
@@ -181,7 +181,7 @@ int[] sortArray(int[] array)
     return array;
 }
 
-int[,] sortLineMatrix(int[,] array)
+int[,] SortLineMatrix(int[,] array)
 {
     int[] sort = new int[array.GetLength(1)];
     for (int i = 0; i < array.GetLength(0); i++)
@@ -190,7 +190,7 @@ int[,] sortLineMatrix(int[,] array)
         {
             sort[j] = array[i, j];
         }
-        sort = sortArray(sort);
+        sort = SortArray(sort);
         for (int j = 0; j < array.GetLength(1); j++)
         {
             array[i, j] = sort[j];
@@ -199,19 +199,19 @@ int[,] sortLineMatrix(int[,] array)
     return array;
 }
 
-void exercise54()
+void Exercise54()
 {
     //Задайте двумерный массив. Напишите программу, 
     //которая упорядочит по убыванию элементы каждой строки
     //двумерного массива.
-    int[,] array = randMatrix(5, 5, 1, 10);
-    writeIntMatrix(array);
+    int[,] array = RandMatrix(5, 5, 1, 10);
+    WriteIntMatrix(array);
     Console.WriteLine();
-    array = sortLineMatrix(array);
-    writeIntMatrix(array);
+    array = SortLineMatrix(array);
+    WriteIntMatrix(array);
 }
 
-int sumArray(int[] array)
+int SumArray(int[] array)
 {
     int sum = 0;
     for (int i = 0; i < array.Length; i++)
@@ -221,7 +221,7 @@ int sumArray(int[] array)
     return sum;
 }
 
-int minSumLines(int[,] array)
+int MinSumLines(int[,] array)
 {
     int[] sums = new int[array.GetLength(0)];
     int[] line = new int[array.GetLength(1)];
@@ -232,7 +232,7 @@ int minSumLines(int[,] array)
         {
             line[j] = array[i, j];
         }
-        sums[i] = sumArray(line);
+        sums[i] = SumArray(line);
     }
     int min = 0;
     for (int i = 0; i < sums.Length; i++)
@@ -245,19 +245,19 @@ int minSumLines(int[,] array)
     return min + 1;
 }
 
-void exercise56()
+void Exercise56()
 {
     //Задайте прямоугольный двумерный массив. 
     //Напишите программу, которая будет находить строку
     // с наименьшей суммой элементов.
-    int[,] array = randMatrix(4, 3, 1, 10);
-    writeIntMatrix(array);
-    int number = minSumLines(array);
+    int[,] array = RandMatrix(4, 3, 1, 10);
+    WriteIntMatrix(array);
+    int number = MinSumLines(array);
     Console.WriteLine($"{number} строка");
 
 }
 
-int sumMultiplyArrays(int[] array1, int[] array2)
+int SumMultiplyArrays(int[] array1, int[] array2)
 {
     int sum = 0;
     for (int i = 0; i < array1.Length; i++)
@@ -267,7 +267,7 @@ int sumMultiplyArrays(int[] array1, int[] array2)
     return sum;
 }
 
-int[,] matrixMultiply(int[,] matrix1, int[,] matrix2)
+int[,] MatrixMultiply(int[,] matrix1, int[,] matrix2)
 {
     int[,] result = new int[matrix1.GetLength(0), matrix1.GetLength(1)];
     int[] line = new int[matrix1.GetLength(1)];
@@ -284,27 +284,27 @@ int[,] matrixMultiply(int[,] matrix1, int[,] matrix2)
             {
                 column[k] = matrix2[k, j];
             }
-            result[i, j] = sumMultiplyArrays(line, column);
+            result[i, j] = SumMultiplyArrays(line, column);
         }
     }
     return result;
 }
 
-void exercise58()
+void Exercise58()
 {
-    int[,] matrix1 = randMatrix(3, 3, 1, 9);
-    int[,] matrix2 = randMatrix(3, 3, 1, 9);
-    int[,] matrixResult = matrixMultiply(matrix1, matrix2);
+    int[,] matrix1 = RandMatrix(3, 3, 1, 9);
+    int[,] matrix2 = RandMatrix(3, 3, 1, 9);
+    int[,] matrixResult = MatrixMultiply(matrix1, matrix2);
 
-    writeIntMatrix(matrix1);
+    WriteIntMatrix(matrix1);
     Console.WriteLine();
-    writeIntMatrix(matrix2);
+    WriteIntMatrix(matrix2);
     Console.WriteLine();
-    writeIntMatrix(matrixResult);
+    WriteIntMatrix(matrixResult);
     Console.WriteLine();
 }
 
-int[,,] randIntTriblArray(int lvl, int line, int column, int min, int max)
+int[,,] RandIntTriblArray(int lvl, int line, int column, int min, int max)
 {
     int num = min;
     bool repeat = true;
@@ -335,7 +335,7 @@ int[,,] randIntTriblArray(int lvl, int line, int column, int min, int max)
     return array;
 }
 
-void writeTribleArray(int[,,] array)
+void WriteTribleArray(int[,,] array)
 {
     for (int i = 0; i < array.GetLength(0); i++)
     {
@@ -351,16 +351,16 @@ void writeTribleArray(int[,,] array)
     }
 }
 
-void exercise60()
+void Exercise60()
 {
     //Сформируйте трёхмерный массив из неповторяющихся двузначных чисел. 
     //Напишите программу, которая будет построчно выводить массив, 
     //добавляя индексы каждого элемента.
-    int[,,] array = randIntTriblArray(4, 4, 4, 10, 100);
-    writeTribleArray(array);
+    int[,,] array = RandIntTriblArray(4, 4, 4, 10, 100);
+    WriteTribleArray(array);
 }
 
-string[,] spiralMatrix(int firstLen, int secondLen)
+string[,] SpiralMatrix(int firstLen, int secondLen)
 {
     string[,] array = new string[firstLen, secondLen];
     for (int i = 0; i < firstLen; i++)
@@ -452,7 +452,7 @@ string[,] spiralMatrix(int firstLen, int secondLen)
     return array;
 }
 
-void writeStringMatrix(string[,] array)
+void WriteStringMatrix(string[,] array)
 {
     for (int i = 0; i < array.GetLength(0); i++)
     {
@@ -464,14 +464,88 @@ void writeStringMatrix(string[,] array)
     }
 }
 
-void exercise62()
+void Exercise62()
 {
     //Напишите программу, которая заполнит спирально массив 4 на 4.
-    string[,] array = spiralMatrix(4, 4);
-    writeStringMatrix(array);
+    string[,] array = SpiralMatrix(20, 20);
+    WriteStringMatrix(array);
 }
-// exercise54();
-// exercise56();
-// exercise58();
-// exercise60();
-exercise62();
+
+void WriteRange(int num1, int num2)
+{
+    Console.Write(num1);
+
+    if (num1 < num2)
+    {
+        for (int i = num1 + 1; i <= num2; i++)
+        {
+            Console.Write($", {i}");
+        }
+    }
+    else
+    {
+        for (int i = num2; i >= num1; i--)
+        {
+            Console.Write($", {i}");
+        }
+    }
+}
+
+void Exercise64()
+{
+    //Задайте значения M и N. Напишите программу, 
+    //которая выведет все натуральные числа в промежутке от M до N.
+    int m = 4;
+    int n = 8; 
+    WriteRange(m, n);
+}
+
+void Exercise66()
+{
+    //Задайте значения M и N. 
+    //Напишите программу, которая найдёт сумму натуральных элементов в промежутке от M до N.
+    int m = 1;
+    int n = 15; 
+    int[] array = new int [n - m + 1];
+    for (int i = 0; i < array.Length; i++)
+    {
+        array[i] = m + i;
+    }
+    Console.WriteLine(SumArray(array));
+}
+
+int Akkerman(int number, int argument)
+{
+    int result = argument;
+    if (number == 0)
+    {
+        return argument + 1;
+    }
+    
+    else if (number > 0 && argument == 0)
+    {
+        return Akkerman(number - 1, 1);
+    }
+
+    else if (number > 0 && argument > 0)
+    {
+        return Akkerman(number - 1, Akkerman(number, argument - 1));
+    }
+    else
+    {
+        return -1;
+    }
+}
+
+void Exercise68()
+{
+    //Напишите программу вычисления функции Аккермана с помощью рекурсии. 
+    //Даны два неотрицательных числа m и n.
+    int m = 2;
+    int n = 3; 
+    Console.WriteLine(Akkerman(m, n));
+}
+
+// Exercise64();
+// Exercise66();
+Exercise68();
